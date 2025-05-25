@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B35E9A402DE34704002E0849 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B35E9A3F2DE34704002E0849 /* SQLite */; };
+		B3D470582DE3493900FB624C /* db.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = B3D470572DE3493900FB624C /* db.sqlite3 */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B35E9A1C2DE341FD002E0849 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,9 @@
 		B35E9A022DE341FB002E0849 /* Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35E9A1B2DE341FC002E0849 /* BankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35E9A252DE341FD002E0849 /* BankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35E9A3A2DE34668002E0849 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		B35E9A3C2DE34693002E0849 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		B3D470572DE3493900FB624C /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B35E9A402DE34704002E0849 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,9 +97,11 @@
 		B35E99F92DE341FB002E0849 = {
 			isa = PBXGroup;
 			children = (
+				B3D470572DE3493900FB624C /* db.sqlite3 */,
 				B35E9A042DE341FB002E0849 /* Bank */,
 				B35E9A1E2DE341FD002E0849 /* BankTests */,
 				B35E9A282DE341FD002E0849 /* BankUITests */,
+				B35E9A392DE34668002E0849 /* Frameworks */,
 				B35E9A032DE341FB002E0849 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +114,15 @@
 				B35E9A252DE341FD002E0849 /* BankUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B35E9A392DE34668002E0849 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B35E9A3C2DE34693002E0849 /* libsqlite3.tbd */,
+				B35E9A3A2DE34668002E0849 /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +145,7 @@
 			);
 			name = Bank;
 			packageProductDependencies = (
+				B35E9A3F2DE34704002E0849 /* SQLite */,
 			);
 			productName = Bank;
 			productReference = B35E9A022DE341FB002E0849 /* Bank.app */;
@@ -208,6 +229,9 @@
 			);
 			mainGroup = B35E99F92DE341FB002E0849;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B35E9A3E2DE346F7002E0849 /* XCRemoteSwiftPackageReference "SQLite" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B35E9A032DE341FB002E0849 /* Products */;
 			projectDirPath = "";
@@ -225,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D470582DE3493900FB624C /* db.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +596,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B35E9A3E2DE346F7002E0849 /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B35E9A3F2DE34704002E0849 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B35E9A3E2DE346F7002E0849 /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B35E99FA2DE341FB002E0849 /* Project object */;
 }
