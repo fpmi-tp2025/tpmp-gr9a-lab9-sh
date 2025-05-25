@@ -74,7 +74,7 @@ BankApp is a mobile banking application for iOS that allows users to securely ma
 ## Contributing
 This project was developed by:
 
-- **Ivan Gontarev** - Team Lead, Project Manager, Developer
+- **Ivan Gontarev (9 group)** - Team Lead, Project Manager, Developer
   - Project architecture and setup
   - Authorization system implementation
   - Database integration
@@ -82,7 +82,7 @@ This project was developed by:
   - CI/CD configuration
   - Project management
 
-- **Darya Sidorskaya** - QA Engineer, UI/UX Designer
+- **Darya Sidorskaya (9 group)** - QA Engineer, UI/UX Designer
   - UI/UX design in Figma
   - Interface mockups creation
   - Storyboard development
@@ -90,7 +90,7 @@ This project was developed by:
   - Unit and UI tests
   - Test documentation
 
-- **Victoria Ivanova** - Developer, UI Designer
+- **Victoria Ivanova (11 group)** - Developer, UI Designer
   - Accounts list implementation
   - Account details screen
   - Currency converter with API integration
