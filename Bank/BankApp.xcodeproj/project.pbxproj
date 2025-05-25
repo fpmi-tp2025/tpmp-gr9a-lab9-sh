@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B38CBA902DE392EE0063A1A8 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B38CBA8F2DE392EE0063A1A8 /* SQLite */; };
+		B38CBA922DE395AB0063A1A8 /* db.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = B38CBA912DE395AB0063A1A8 /* db.sqlite3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		B38CBA562DE38F230063A1A8 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B38CBA6F2DE38F240063A1A8 /* BankAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B38CBA792DE38F240063A1A8 /* BankAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B38CBA912DE395AB0063A1A8 /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -93,6 +95,7 @@
 		B38CBA4D2DE38F230063A1A8 = {
 			isa = PBXGroup;
 			children = (
+				B38CBA912DE395AB0063A1A8 /* db.sqlite3 */,
 				B38CBA582DE38F230063A1A8 /* BankApp */,
 				B38CBA722DE38F240063A1A8 /* BankAppTests */,
 				B38CBA7C2DE38F240063A1A8 /* BankAppUITests */,
@@ -242,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B38CBA922DE395AB0063A1A8 /* db.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
