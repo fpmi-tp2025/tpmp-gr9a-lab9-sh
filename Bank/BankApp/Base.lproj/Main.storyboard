@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,13 +11,13 @@
         <!--View Controller Account-->
         <scene sceneID="Dbb-Pc-pII">
             <objects>
-                <viewController storyboardIdentifier="account" id="Qpq-vE-eSA" customClass="ViewControllerAccount" customModule="Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="account" id="Qpq-vE-eSA" customClass="ViewControllerAccount" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ODn-Uw-Qcb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHS-rY-xYF">
-                                <rect key="frame" x="20" y="758" width="374" height="50"/>
+                                <rect key="frame" x="20" y="736" width="362" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AMX-Ov-9aX"/>
                                 </constraints>
@@ -27,15 +27,15 @@
                                 </buttonConfiguration>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="F97-eH-teu">
-                                <rect key="frame" x="20" y="116" width="374" height="622"/>
+                                <rect key="frame" x="20" y="144" width="362" height="572"/>
                                 <color key="backgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="Vnc-7z-U3I">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="100"/>
+                                        <rect key="frame" x="0.0" y="50" width="362" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vnc-7z-U3I" id="9As-hF-HEY">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -62,34 +62,34 @@
         <!--View Controller Menu-->
         <scene sceneID="MuK-0b-6x0">
             <objects>
-                <viewController storyboardIdentifier="ViewControllerMenu" id="aos-ER-A5W" customClass="ViewControllerMenu" customModule="Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewControllerMenu" id="aos-ER-A5W" customClass="ViewControllerMenu" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xLx-Gq-mF2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGg-zg-KAX">
-                                <rect key="frame" x="20" y="116" width="374" height="40.5"/>
+                                <rect key="frame" x="20" y="144" width="362" height="40.666666666666657"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Accounts">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfF-7V-ndv">
-                                <rect key="frame" x="20" y="164.5" width="374" height="40.5"/>
+                                <rect key="frame" x="20" y="192.66666666666666" width="362" height="40.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Currency Converter">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEO-q5-yUk">
-                                <rect key="frame" x="20" y="213" width="374" height="40.5"/>
+                                <rect key="frame" x="20" y="240.99999999999997" width="362" height="40.666666666666657"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Map">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdt-QP-uMa">
-                                <rect key="frame" x="20" y="767.5" width="374" height="40.5"/>
+                                <rect key="frame" x="20" y="745.66666666666663" width="362" height="40.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Back">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
@@ -122,35 +122,32 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FmM-oS-STC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xwS-p1-beK">
-                                <rect key="frame" x="20" y="116" width="374" height="36"/>
+                                <rect key="frame" x="20" y="144" width="362" height="36"/>
                                 <color key="backgroundColor" red="0.67450980392156867" green="0.72549019607843135" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xpb-GD-57D">
-                                <rect key="frame" x="20" y="172" width="374" height="36"/>
+                                <rect key="frame" x="20" y="200" width="362" height="36"/>
                                 <color key="backgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Brd-1d-9FS">
-                                <rect key="frame" x="20" y="767.5" width="374" height="40.5"/>
+                                <rect key="frame" x="20" y="745.66666666666663" width="362" height="40.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Login">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="tryLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hLI-bc-Khg"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipe-Bq-Nkw">
-                                <rect key="frame" x="20" y="228" width="374" height="0.0"/>
+                                <rect key="frame" x="20" y="256" width="362" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
@@ -175,9 +172,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="errorLabel" destination="Ipe-Bq-Nkw" id="4YX-Yg-C7b"/>
-                        <outlet property="passwordField" destination="Xpb-GD-57D" id="ypH-iu-4xb"/>
-                        <outlet property="usernameField" destination="xwS-p1-beK" id="Tgr-5h-dxb"/>
+                        <outlet property="errorLabel" destination="Ipe-Bq-Nkw" id="sxO-lo-3iN"/>
+                        <outlet property="passwordField" destination="Xpb-GD-57D" id="YoV-8v-d5h"/>
+                        <outlet property="usernameField" destination="xwS-p1-beK" id="I5l-A1-P9z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -187,19 +184,19 @@
         <!--View Controller Converter-->
         <scene sceneID="2hs-Nx-KNU">
             <objects>
-                <viewController storyboardIdentifier="converter" id="XQm-2a-tlo" customClass="ViewControllerConverter" customModule="Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="converter" id="XQm-2a-tlo" customClass="ViewControllerConverter" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mdV-0C-9C2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="sum" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9H8-Sw-0TK">
-                                <rect key="frame" x="20" y="116" width="374" height="36"/>
+                                <rect key="frame" x="20" y="144" width="362" height="36"/>
                                 <color key="backgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sIE-Ne-iLQ">
-                                <rect key="frame" x="20" y="194.5" width="374" height="32"/>
+                                <rect key="frame" x="20" y="222.66666666666666" width="362" height="32"/>
                                 <color key="backgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="BYN"/>
@@ -209,26 +206,26 @@
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87f-3m-wZD">
-                                <rect key="frame" x="20" y="767" width="374" height="41"/>
+                                <rect key="frame" x="20" y="745" width="362" height="41"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Back">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
                                 </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original Currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UsQ-8O-z53">
-                                <rect key="frame" x="20" y="160" width="374" height="26.5"/>
+                                <rect key="frame" x="20" y="188" width="362" height="26.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target Currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPu-1m-C6V">
-                                <rect key="frame" x="20" y="233.5" width="374" height="27"/>
+                                <rect key="frame" x="20" y="261.66666666666669" width="362" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZU0-ji-xad">
-                                <rect key="frame" x="20" y="268.5" width="374" height="32"/>
+                                <rect key="frame" x="20" y="296.66666666666669" width="362" height="32"/>
                                 <color key="backgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="BYN"/>
@@ -238,14 +235,14 @@
                                 </segments>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="result" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5PT-x7-rPa">
-                                <rect key="frame" x="20" y="307.5" width="374" height="36"/>
+                                <rect key="frame" x="20" y="335.66666666666669" width="362" height="36"/>
                                 <color key="backgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.40784313729999999" green="0.058823529409999999" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2S-fV-WUt">
-                                <rect key="frame" x="20" y="718.5" width="374" height="40.5"/>
+                                <rect key="frame" x="20" y="696.66666666666663" width="362" height="40.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Convert">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
@@ -289,33 +286,33 @@
         <!--View Controller Map-->
         <scene sceneID="UHa-nU-0P1">
             <objects>
-                <viewController storyboardIdentifier="map" id="981-aR-R6n" customClass="ViewControllerMap" customModule="Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="map" id="981-aR-R6n" customClass="ViewControllerMap" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bUH-HS-bwZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1M-9Z-ZIk">
-                                <rect key="frame" x="20" y="767" width="374" height="41"/>
+                                <rect key="frame" x="20" y="745" width="362" height="41"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Back">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
                                 </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearest Department: Zhukov Avenue, 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obk-l4-EGd">
-                                <rect key="frame" x="20" y="723" width="374" height="24"/>
+                                <rect key="frame" x="20" y="701" width="362" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjA-rb-wvu">
-                                <rect key="frame" x="20" y="674" width="374" height="41"/>
+                                <rect key="frame" x="20" y="652" width="362" height="41"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Nearest Department">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
                                 </buttonConfiguration>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gqw-kY-489">
-                                <rect key="frame" x="20" y="116" width="374" height="538"/>
+                                <rect key="frame" x="20" y="144" width="362" height="488"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tam-6p-4qG"/>
@@ -343,28 +340,28 @@
         <!--View Controller Accounts-->
         <scene sceneID="yWz-6t-kdR">
             <objects>
-                <viewController storyboardIdentifier="accounts" id="YLE-4D-Uai" customClass="ViewControllerAccounts" customModule="Bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="accounts" id="YLE-4D-Uai" customClass="ViewControllerAccounts" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TIc-gk-01X">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="802"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wey-9x-gvX">
-                                <rect key="frame" x="20" y="767.5" width="374" height="40.5"/>
+                                <rect key="frame" x="20" y="731.66666666666663" width="362" height="40.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Back">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
                                 </buttonConfiguration>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ygs-c9-XI3">
-                                <rect key="frame" x="20" y="68" width="374" height="679.5"/>
+                                <rect key="frame" x="20" y="82" width="362" height="629.66666666666663"/>
                                 <color key="backgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="o32-yW-Lzy">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="362" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o32-yW-Lzy" id="Xlb-iV-MGP">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.67450980390000004" green="0.72549019609999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>

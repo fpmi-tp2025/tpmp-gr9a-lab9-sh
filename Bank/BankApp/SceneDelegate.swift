@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  Bank
+//  BankApp
 //
 //  Created by Ivan Hontarau on 25.05.25.
 //

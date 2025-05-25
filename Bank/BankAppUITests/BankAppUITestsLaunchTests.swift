@@ -1,13 +1,13 @@
 //
-//  BankUITestsLaunchTests.swift
-//  BankUITests
+//  BankAppUITestsLaunchTests.swift
+//  BankAppUITests
 //
 //  Created by Ivan Hontarau on 25.05.25.
 //
 
 import XCTest
 
-final class BankUITestsLaunchTests: XCTestCase {
+final class BankAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

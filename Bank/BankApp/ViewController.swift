@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Bank
+//  BankApp
 //
 //  Created by Ivan Hontarau on 25.05.25.
 //
@@ -44,12 +44,12 @@ class ViewController: UIViewController {
             for user in try db.prepare(users) {
                 if (user[username] == cur_username && user[password] == cur_password) {
                     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-
-                    let viewController = storyBoard.instantiateViewController(identifier: "ViewControllerMenu") as! ViewControllerMenu
-                    viewController.receivedUserId = user[user_id]
-                    self.present(viewController, animated: false, completion: nil)
-                    errorLabel.text = ""
-                    flag = true
+//
+//                    let viewController = storyBoard.instantiateViewController(identifier: "ViewControllerMenu") as! ViewControllerMenu
+//                    viewController.receivedUserId = user[user_id]
+//                    self.present(viewController, animated: false, completion: nil)
+//                    errorLabel.text = ""
+//                    flag = true
                 }
             }
             if (!flag) {
@@ -67,4 +67,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 }
+
+
 
