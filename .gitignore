@@ -54,9 +54,5 @@
 # **/Packages
 # **.build
 
-# Localization
-**/*.lproj/*.xib
-**/*.lproj/*.storyboard
-
 # User-specific
 **/.DS_Store
