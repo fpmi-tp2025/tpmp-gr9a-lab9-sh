@@ -71,30 +71,6 @@ BankApp is a mobile banking application for iOS that allows users to securely ma
 - **CI/CD**: GitHub Actions
 - **Architecture**: MVC
 
-## Project Structure
-```
-BankApp/
-├── Controllers/
-│   ├── ViewController.swift         # Login screen
-│   ├── ViewControllerMenu.swift     # Main menu
-│   ├── ViewControllerAccounts.swift # Accounts list
-│   ├── ViewControllerAccount.swift  # Account details
-│   ├── ViewControllerConverter.swift # Currency converter
-│   └── ViewControllerMap.swift      # Branches map
-├── Views/
-│   ├── Main.storyboard             # UI layouts
-│   ├── accountsCell.xib            # Account cell
-│   └── acountDataCell.xib          # Detail cell
-├── Supporting Files/
-│   ├── AppDelegate.swift
-│   └── SceneDelegate.swift
-├── Resources/
-│   └── db.sqlite3                  # Database file
-└── Tests/
-    ├── BankAppTests/               # Unit tests
-    └── BankAppUITests/             # UI tests
-```
-
 ## Contributing
 This project was developed by:
 
