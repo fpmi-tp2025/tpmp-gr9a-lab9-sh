@@ -2,18 +2,25 @@
 //  BankAppTests.swift
 //  BankAppTests
 //
-//  Created by Team on 25.05.25.
+//  Created by Ivan Hontarau on 25.05.25.
 //
 
 import XCTest
-import SQLite
 @testable import BankApp
 
-class BankAppTests: XCTestCase {
-    
+final class BankAppTests: XCTestCase {
+
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
     // MARK: - ViewController Tests
     
-    func testViewControllerInitialization() {
+    func testViewControllerInitialization() throws {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(identifier: "ViewController") as? ViewController
         
@@ -25,7 +32,7 @@ class BankAppTests: XCTestCase {
         XCTAssertNotNil(viewController?.errorLabel)
     }
     
-    func testEmptyCredentialsLogin() {
+    func testLoginWithEmptyFields() throws {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(identifier: "ViewController") as! ViewController
         viewController.loadViewIfNeeded()
@@ -37,9 +44,29 @@ class BankAppTests: XCTestCase {
         XCTAssertEqual(viewController.errorLabel.text, "invalid username or password")
     }
     
+    func testLoginWithInvalidCredentials() throws {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(identifier: "ViewController") as! ViewController
+        viewController.loadViewIfNeeded()
+        
+        viewController.usernameField.text = "wronguser"
+        viewController.passwordField.text = "wrongpass"
+        viewController.tryLogin(self)
+        
+        XCTAssertEqual(viewController.errorLabel.text, "invalid username or password")
+    }
+    
     // MARK: - ViewControllerMenu Tests
     
-    func testMenuViewControllerUserId() {
+    func testMenuViewControllerInitialization() throws {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let menuVC = storyboard.instantiateViewController(identifier: "ViewControllerMenu") as? ViewControllerMenu
+        
+        XCTAssertNotNil(menuVC)
+        menuVC?.loadViewIfNeeded()
+    }
+    
+    func testMenuViewControllerUserIdStorage() throws {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let menuVC = storyboard.instantiateViewController(identifier: "ViewControllerMenu") as! ViewControllerMenu
         
@@ -49,20 +76,27 @@ class BankAppTests: XCTestCase {
         XCTAssertEqual(menuVC.receivedUserId, testUserId)
     }
     
-    // MARK: - ViewControllerConverter Tests
+    // MARK: - ViewControllerAccounts Tests
     
-    func testCurrencyConversionModel() {
-        let testRates = ["USD": 1.0, "EUR": 0.85, "RUB": 75.0]
-        let conversion = ViewControllerConverter.CurrencyConversion(rates: testRates)
+    func testAccountsViewControllerInitialization() throws {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let accountsVC = storyboard.instantiateViewController(identifier: "accounts") as? ViewControllerAccounts
         
-        XCTAssertEqual(conversion.rates["USD"], 1.0)
-        XCTAssertEqual(conversion.rates["EUR"], 0.85)
-        XCTAssertEqual(conversion.rates["RUB"], 75.0)
+        XCTAssertNotNil(accountsVC)
+        accountsVC?.loadViewIfNeeded()
+        
+        XCTAssertNotNil(accountsVC?.table)
+        XCTAssertEqual(accountsVC?.dataSourceArray.count, 0)
+        XCTAssertEqual(accountsVC?.idArray.count, 0)
     }
     
-    func testConverterInitialization() {
+    // MARK: - ViewControllerConverter Tests
+    
+    func testConverterViewControllerInitialization() throws {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let converterVC = storyboard.instantiateViewController(identifier: "converter") as? ViewControllerConverter
+        
+        XCTAssertNotNil(converterVC)
         converterVC?.loadViewIfNeeded()
         
         XCTAssertNotNil(converterVC?.inputCurrency)
@@ -71,42 +105,71 @@ class BankAppTests: XCTestCase {
         XCTAssertNotNil(converterVC?.outputField)
     }
     
-    // MARK: - TableView Cells Tests
-    
-    func testAccountsCellNib() {
-        let nib = accountsCell.nib()
-        XCTAssertNotNil(nib)
+    func testCurrencyConversionModel() throws {
+        let testRates = ["USD": 1.0, "EUR": 0.85, "RUB": 75.0]
+        let conversion = ViewControllerConverter.CurrencyConversion(rates: testRates)
         
-        let cell = nib.instantiate(withOwner: nil, options: nil).first as? accountsCell
-        XCTAssertNotNil(cell)
+        XCTAssertEqual(conversion.rates["USD"], 1.0)
+        XCTAssertEqual(conversion.rates["EUR"], 0.85)
+        XCTAssertEqual(conversion.rates["RUB"], 75.0)
+    }
+    
+    // MARK: - Custom Cells Tests
+    
+    func testAccountsCellIdentifier() throws {
         XCTAssertEqual(accountsCell.identifier, "accountsCell")
     }
     
-    func testAccountDataCellNib() {
-        let nib = acountDataCell.nib()
+    func testAccountsCellNib() throws {
+        let nib = accountsCell.nib()
         XCTAssertNotNil(nib)
         
-        let cell = nib.instantiate(withOwner: nil, options: nil).first as? acountDataCell
-        XCTAssertNotNil(cell)
+        let objects = nib.instantiate(withOwner: nil, options: nil)
+        XCTAssertTrue(objects.count > 0)
+        XCTAssertTrue(objects.first is accountsCell)
+    }
+    
+    func testAccountDataCellIdentifier() throws {
         XCTAssertEqual(acountDataCell.identifier, "acountDataCell")
     }
     
-    // MARK: - Database Helper Tests
-    
-    func testDatabaseCopyFunction() {
-        let tempDir = NSTemporaryDirectory()
-        let sourcePath = tempDir + "test_source.sqlite3"
-        let testData = "test".data(using: .utf8)!
+    func testAccountDataCellNib() throws {
+        let nib = acountDataCell.nib()
+        XCTAssertNotNil(nib)
         
-        // Create test source file
+        let objects = nib.instantiate(withOwner: nil, options: nil)
+        XCTAssertTrue(objects.count > 0)
+        XCTAssertTrue(objects.first is acountDataCell)
+    }
+    
+    // MARK: - Helper Functions Tests
+    
+    func testDatabaseCopyFunction() throws {
+        let tempDir = NSTemporaryDirectory()
+        let sourcePath = tempDir + "test_db.sqlite3"
+        
+        // Create test file
+        let testData = "test database".data(using: .utf8)!
         FileManager.default.createFile(atPath: sourcePath, contents: testData, attributes: nil)
         
         // Test copy function
         let result = copyDatabaseIfNeeded(sourcePath: sourcePath)
         
-        // Cleanup
+        // Clean up
         try? FileManager.default.removeItem(atPath: sourcePath)
+        let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        try? FileManager.default.removeItem(atPath: documents + "/db.sqlite3")
         
-        XCTAssertTrue(result || FileManager.default.fileExists(atPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "/db.sqlite3"))
+        XCTAssertTrue(result)
+    }
+    
+    // MARK: - Performance Tests
+    
+    func testViewControllerLoadPerformance() throws {
+        self.measure {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(identifier: "ViewController")
+            viewController.loadViewIfNeeded()
+        }
     }
 }
