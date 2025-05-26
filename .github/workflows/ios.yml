@@ -2,9 +2,9 @@ name: iOS CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
   test:
@@ -30,6 +30,7 @@ jobs:
           
     - name: Install dependencies
       run: |
+        cd Bank
         # Add any dependency installation commands here if needed
         # For example, if using CocoaPods:
         # pod install
@@ -42,7 +43,7 @@ jobs:
         set -o pipefail
         xcodebuild -project BankApp.xcodeproj \
           -scheme BankApp \
-          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
           -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
           clean build test \
           CODE_SIGNING_REQUIRED=NO \
@@ -55,7 +56,7 @@ jobs:
         set -o pipefail
         xcodebuild -project BankApp.xcodeproj \
           -scheme BankApp \
-          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
           -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
           test -only-testing:BankAppTests \
           CODE_SIGNING_REQUIRED=NO \
@@ -68,7 +69,7 @@ jobs:
         set -o pipefail
         xcodebuild -project BankApp.xcodeproj \
           -scheme BankApp \
-          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
           -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
           test -only-testing:BankAppUITests \
           CODE_SIGNING_REQUIRED=NO \
@@ -101,7 +102,7 @@ jobs:
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: '16.3'
+        xcode-version: '16.2'
         
     - name: Cache DerivedData
       uses: actions/cache@v4
@@ -113,6 +114,7 @@ jobs:
           
     - name: Build for Release
       run: |
+        cd Bank
         set -o pipefail
         xcodebuild -project BankApp.xcodeproj \
           -scheme BankApp \
