@@ -1,78 +1,122 @@
-name: iOS starter workflow
+name: iOS CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main, develop ]
 
 jobs:
-  build:
-    name: Build and Test default scheme using any available iPhone simulator
-    runs-on: macos-14
-
+  test:
+    name: Test
+    runs-on: macos-latest
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Select Xcode version
-        uses: maxim-lobanov/setup-xcode@v3
-        with:
-          xcode-version: '16.3'
-
-      - name: List contents of Bank directory
-        run: |
-          cd Bank
-          ls -la
-
-      - name: Set Default Scheme
-        run: |
-          cd Bank
-          ls -la | grep .xcodeproj
-          if [ -d "BankApp.xcodeproj" ]; then
-            scheme_list=$(xcodebuild -list -json | tr -d "\n")
-            default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-            echo $default | cat >default
-            echo "Using default scheme: $default"
-          else
-            echo "No Xcode project found"
-            exit 1
-          fi
-
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
-          platform: ${{ 'iOS Simulator' }}
-        run: |
-          cd Bank
-          device=$(xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "$(ls -A | grep -i \.xcworkspace$)" ]; then
-            filetype_parameter="workspace"
-            file_to_build="$(ls -A | grep -i \.xcworkspace$)"
-          else
-            filetype_parameter="project"
-            file_to_build="$(ls -A | grep -i \.xcodeproj$)"
-          fi
-          file_to_build=$(echo $file_to_build | awk '{$1=$1;print}')
-          echo "Building scheme: $scheme, file: $file_to_build, platform: $platform, device: $device"
-          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
-
-      - name: Test
-        env:
-          scheme: ${{ 'default' }}
-          platform: ${{ 'iOS Simulator' }}
-        run: |
-          cd Bank
-          device=$(xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "$(ls -A | grep -i \.xcworkspace$)" ]; then
-            filetype_parameter="workspace"
-            file_to_build="$(ls -A | grep -i \.xcworkspace$)"
-          else
-            filetype_parameter="project"
-            file_to_build="$(ls -A | grep -i \.xcodeproj$)"
-          fi
-          file_to_build=$(echo $file_to_build | awk '{$1=$1;print}')
-          echo "Testing scheme: $scheme, file: $file_to_build, platform: $platform, device: $device"
-          xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '16.3'
+        
+    - name: Cache DerivedData
+      uses: actions/cache@v4
+      with:
+        path: ~/Library/Developer/Xcode/DerivedData
+        key: ${{ runner.os }}-derived-data-${{ hashFiles('**/*.xcodeproj', '**/*.xcworkspace') }}
+        restore-keys: |
+          ${{ runner.os }}-derived-data-
+          
+    - name: Install dependencies
+      run: |
+        # Add any dependency installation commands here if needed
+        # For example, if using CocoaPods:
+        # pod install
+        # Or if using Swift Package Manager, dependencies are resolved automatically
+        echo "Installing dependencies..."
+        
+    - name: Build and Test
+      run: |
+        set -o pipefail
+        xcodebuild -project BankApp.xcodeproj \
+          -scheme BankApp \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
+          clean build test \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          | xcpretty --color --report junit --output build/reports/junit.xml
+          
+    - name: Run Unit Tests
+      run: |
+        set -o pipefail
+        xcodebuild -project BankApp.xcodeproj \
+          -scheme BankApp \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
+          test -only-testing:BankAppTests \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          | xcpretty --color
+          
+    - name: Run UI Tests
+      run: |
+        set -o pipefail
+        xcodebuild -project BankApp.xcodeproj \
+          -scheme BankApp \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
+          test -only-testing:BankAppUITests \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          | xcpretty --color
+          
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: build/reports/
+        
+    - name: Upload Coverage Reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-reports
+        path: ~/Library/Developer/Xcode/DerivedData/*/Logs/Test/*.xcresult
+        
+  build:
+    name: Build
+    runs-on: macos-latest
+    needs: test
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '16.3'
+        
+    - name: Cache DerivedData
+      uses: actions/cache@v4
+      with:
+        path: ~/Library/Developer/Xcode/DerivedData
+        key: ${{ runner.os }}-derived-data-${{ hashFiles('**/*.xcodeproj', '**/*.xcworkspace') }}
+        restore-keys: |
+          ${{ runner.os }}-derived-data-
+          
+    - name: Build for Release
+      run: |
+        set -o pipefail
+        xcodebuild -project BankApp.xcodeproj \
+          -scheme BankApp \
+          -configuration Release \
+          -destination 'generic/platform=iOS' \
+          -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
+          clean build \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          | xcpretty --color
