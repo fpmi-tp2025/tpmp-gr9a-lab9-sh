@@ -1,0 +1,110 @@
+/* Class = "UITextField"; placeholder = "result"; ObjectID = "5PT-x7-rPa"; */
+"5PT-x7-rPa.placeholder" = "вынік";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "87f-3m-wZD"; */
+"87f-3m-wZD.configuration.title" = "Назад";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "87f-3m-wZD"; */
+"87f-3m-wZD.normalTitle" = "Кнопка";
+
+/* Class = "UITextField"; placeholder = "sum"; ObjectID = "9H8-Sw-0TK"; */
+"9H8-Sw-0TK.placeholder" = "сума";
+
+/* Class = "UIButton"; configuration.title = "Login"; ObjectID = "Brd-1d-9FS"; */
+"Brd-1d-9FS.configuration.title" = "Увайсці";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Brd-1d-9FS"; */
+"Brd-1d-9FS.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "Convert"; ObjectID = "R2S-fV-WUt"; */
+"R2S-fV-WUt.configuration.title" = "Канвертаваць";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "R2S-fV-WUt"; */
+"R2S-fV-WUt.normalTitle" = "Кнопка";
+
+/* Class = "UILabel"; text = "From"; ObjectID = "UsQ-8O-z53"; */
+"UsQ-8O-z53.text" = "З";
+
+/* Class = "UIButton"; configuration.title = "Accounts"; ObjectID = "VGg-zg-KAX"; */
+"VGg-zg-KAX.configuration.title" = "Рахункі";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VGg-zg-KAX"; */
+"VGg-zg-KAX.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "Map"; ObjectID = "WEO-q5-yUk"; */
+"WEO-q5-yUk.configuration.title" = "Мапа";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "WEO-q5-yUk"; */
+"WEO-q5-yUk.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "Nearest Department"; ObjectID = "XjA-rb-wvu"; */
+"XjA-rb-wvu.configuration.title" = "Бліжэйшы аддзел";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "XjA-rb-wvu"; */
+"XjA-rb-wvu.normalTitle" = "Кнопка";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Xpb-GD-57D"; */
+"Xpb-GD-57D.placeholder" = "Пароль";
+
+/* Class = "UISegmentedControl"; ZU0-ji-xad.segmentTitles[0] = "BYN"; ObjectID = "ZU0-ji-xad"; */
+"ZU0-ji-xad.segmentTitles[0]" = "BYN";
+
+/* Class = "UISegmentedControl"; ZU0-ji-xad.segmentTitles[1] = "USD"; ObjectID = "ZU0-ji-xad"; */
+"ZU0-ji-xad.segmentTitles[1]" = "USD";
+
+/* Class = "UISegmentedControl"; ZU0-ji-xad.segmentTitles[2] = "RUB"; ObjectID = "ZU0-ji-xad"; */
+"ZU0-ji-xad.segmentTitles[2]" = "RUB";
+
+/* Class = "UISegmentedControl"; ZU0-ji-xad.segmentTitles[3] = "EUR"; ObjectID = "ZU0-ji-xad"; */
+"ZU0-ji-xad.segmentTitles[3]" = "EUR";
+
+/* Class = "UILabel"; text = "To"; ObjectID = "mPu-1m-C6V"; */
+"mPu-1m-C6V.text" = "У";
+
+/* Class = "UILabel"; text = "Nearest Department: Zhukov Avenue, 12"; ObjectID = "obk-l4-EGd"; */
+"obk-l4-EGd.text" = "";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "q1M-9Z-ZIk"; */
+"q1M-9Z-ZIk.configuration.title" = "Назад";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "q1M-9Z-ZIk"; */
+"q1M-9Z-ZIk.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "rHS-rY-xYF"; */
+"rHS-rY-xYF.configuration.title" = "Назад";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rHS-rY-xYF"; */
+"rHS-rY-xYF.normalTitle" = "Кнопка";
+
+/* Class = "UISegmentedControl"; sIE-Ne-iLQ.segmentTitles[0] = "BYN"; ObjectID = "sIE-Ne-iLQ"; */
+"sIE-Ne-iLQ.segmentTitles[0]" = "BYN";
+
+/* Class = "UISegmentedControl"; sIE-Ne-iLQ.segmentTitles[1] = "USD"; ObjectID = "sIE-Ne-iLQ"; */
+"sIE-Ne-iLQ.segmentTitles[1]" = "USD";
+
+/* Class = "UISegmentedControl"; sIE-Ne-iLQ.segmentTitles[2] = "RUB"; ObjectID = "sIE-Ne-iLQ"; */
+"sIE-Ne-iLQ.segmentTitles[2]" = "RUB";
+
+/* Class = "UISegmentedControl"; sIE-Ne-iLQ.segmentTitles[3] = "EUR"; ObjectID = "sIE-Ne-iLQ"; */
+"sIE-Ne-iLQ.segmentTitles[3]" = "EUR";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "sdt-QP-uMa"; */
+"sdt-QP-uMa.configuration.title" = "Назад";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "sdt-QP-uMa"; */
+"sdt-QP-uMa.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "wey-9x-gvX"; */
+"wey-9x-gvX.configuration.title" = "Назад";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "wey-9x-gvX"; */
+"wey-9x-gvX.normalTitle" = "Кнопка";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "xwS-p1-beK"; */
+"xwS-p1-beK.placeholder" = "Імя карыстальніка";
+
+/* Class = "UIButton"; configuration.title = "Currency Converter"; ObjectID = "zfF-7V-ndv"; */
+"zfF-7V-ndv.configuration.title" = "Канвертар валюты";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zfF-7V-ndv"; */
+"zfF-7V-ndv.normalTitle" = "Кнопка";

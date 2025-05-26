@@ -1,0 +1,111 @@
+
+/* Class = "UITextField"; placeholder = "result"; ObjectID = "5PT-x7-rPa"; */
+"5PT-x7-rPa.placeholder" = "result";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "87f-3m-wZD"; */
+"87f-3m-wZD.configuration.title" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "87f-3m-wZD"; */
+"87f-3m-wZD.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "sum"; ObjectID = "9H8-Sw-0TK"; */
+"9H8-Sw-0TK.placeholder" = "sum";
+
+/* Class = "UIButton"; configuration.title = "Login"; ObjectID = "Brd-1d-9FS"; */
+"Brd-1d-9FS.configuration.title" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Brd-1d-9FS"; */
+"Brd-1d-9FS.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Convert"; ObjectID = "R2S-fV-WUt"; */
+"R2S-fV-WUt.configuration.title" = "Convert";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "R2S-fV-WUt"; */
+"R2S-fV-WUt.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "From"; ObjectID = "UsQ-8O-z53"; */
+"UsQ-8O-z53.text" = "From";
+
+/* Class = "UIButton"; configuration.title = "Accounts"; ObjectID = "VGg-zg-KAX"; */
+"VGg-zg-KAX.configuration.title" = "Accounts";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VGg-zg-KAX"; */
+"VGg-zg-KAX.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Map"; ObjectID = "WEO-q5-yUk"; */
+"WEO-q5-yUk.configuration.title" = "Map";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "WEO-q5-yUk"; */
+"WEO-q5-yUk.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Nearest Department"; ObjectID = "XjA-rb-wvu"; */
+"XjA-rb-wvu.configuration.title" = "Nearest Department";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "XjA-rb-wvu"; */
+"XjA-rb-wvu.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Xpb-GD-57D"; */
+"Xpb-GD-57D.placeholder" = "Password";
+
+/* Class = "UISegmentedControl"; ZU0-ji-xad.segmentTitles[0] = "BYN"; ObjectID = "ZU0-ji-xad"; */
+"ZU0-ji-xad.segmentTitles[0]" = "BYN";
+
+/* Class = "UISegmentedControl"; ZU0-ji-xad.segmentTitles[1] = "USD"; ObjectID = "ZU0-ji-xad"; */
+"ZU0-ji-xad.segmentTitles[1]" = "USD";
+
+/* Class = "UISegmentedControl"; ZU0-ji-xad.segmentTitles[2] = "RUB"; ObjectID = "ZU0-ji-xad"; */
+"ZU0-ji-xad.segmentTitles[2]" = "RUB";
+
+/* Class = "UISegmentedControl"; ZU0-ji-xad.segmentTitles[3] = "EUR"; ObjectID = "ZU0-ji-xad"; */
+"ZU0-ji-xad.segmentTitles[3]" = "EUR";
+
+/* Class = "UILabel"; text = "To"; ObjectID = "mPu-1m-C6V"; */
+"mPu-1m-C6V.text" = "To";
+
+/* Class = "UILabel"; text = "Nearest Department: Zhukov Avenue, 12"; ObjectID = "obk-l4-EGd"; */
+"obk-l4-EGd.text" = "";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "q1M-9Z-ZIk"; */
+"q1M-9Z-ZIk.configuration.title" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "q1M-9Z-ZIk"; */
+"q1M-9Z-ZIk.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "rHS-rY-xYF"; */
+"rHS-rY-xYF.configuration.title" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rHS-rY-xYF"; */
+"rHS-rY-xYF.normalTitle" = "Button";
+
+/* Class = "UISegmentedControl"; sIE-Ne-iLQ.segmentTitles[0] = "BYN"; ObjectID = "sIE-Ne-iLQ"; */
+"sIE-Ne-iLQ.segmentTitles[0]" = "BYN";
+
+/* Class = "UISegmentedControl"; sIE-Ne-iLQ.segmentTitles[1] = "USD"; ObjectID = "sIE-Ne-iLQ"; */
+"sIE-Ne-iLQ.segmentTitles[1]" = "USD";
+
+/* Class = "UISegmentedControl"; sIE-Ne-iLQ.segmentTitles[2] = "RUB"; ObjectID = "sIE-Ne-iLQ"; */
+"sIE-Ne-iLQ.segmentTitles[2]" = "RUB";
+
+/* Class = "UISegmentedControl"; sIE-Ne-iLQ.segmentTitles[3] = "EUR"; ObjectID = "sIE-Ne-iLQ"; */
+"sIE-Ne-iLQ.segmentTitles[3]" = "EUR";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "sdt-QP-uMa"; */
+"sdt-QP-uMa.configuration.title" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "sdt-QP-uMa"; */
+"sdt-QP-uMa.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "wey-9x-gvX"; */
+"wey-9x-gvX.configuration.title" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "wey-9x-gvX"; */
+"wey-9x-gvX.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "xwS-p1-beK"; */
+"xwS-p1-beK.placeholder" = "Username";
+
+/* Class = "UIButton"; configuration.title = "Currency Converter"; ObjectID = "zfF-7V-ndv"; */
+"zfF-7V-ndv.configuration.title" = "Currency Converter";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zfF-7V-ndv"; */
+"zfF-7V-ndv.normalTitle" = "Button";

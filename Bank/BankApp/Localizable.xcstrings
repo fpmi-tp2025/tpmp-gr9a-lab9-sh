@@ -1,0 +1,499 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "Key": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ключ"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ключ"
+          }
+        }
+      }
+    },
+    "invalid username or password": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Няправільнае імя карыстальніка або пароль"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неверное имя пользователя или пароль"
+          }
+        }
+      }
+    },
+    "error connecting to database": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Памылка падключэння да базы дадзеных"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ошибка подключения к базе данных"
+          }
+        }
+      }
+    },
+    "Owner": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уладальнік"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Владелец"
+          }
+        }
+      }
+    },
+    "Account ID": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ідэнтыфікатар рахунку"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Идентификатор счета"
+          }
+        }
+      }
+    },
+    "Account Type": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тып рахунку"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тип счета"
+          }
+        }
+      }
+    },
+    "Account Sub Type": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Падтып рахунку"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подтип счета"
+          }
+        }
+      }
+    },
+    "Overdraft Limit": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ліміт овердрафту"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лимит овердрафта"
+          }
+        }
+      }
+    },
+    "Balance": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Баланс"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Баланс"
+          }
+        }
+      }
+    },
+    "Location Not Available": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Месцазнаходжанне нядаступна"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Местоположение недоступно"
+          }
+        }
+      }
+    },
+    "Please enable location services and try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Калі ласка, уключыце службы геалакацыі і паспрабуйце яшчэ раз."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пожалуйста, включите службы геолокации и попробуйте снова."
+          }
+        }
+      }
+    },
+    "OK": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ОК"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ОК"
+          }
+        }
+      }
+    },
+    "No Departments Found": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аддзелы не знойдзены"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отделы не найдены"
+          }
+        }
+      }
+    },
+    "No departments available to show the route.": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Няма даступных аддзелаў для адлюстравання маршруту."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нет доступных отделов для отображения маршрута."
+          }
+        }
+      }
+    },
+    "Error": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Памылка"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ошибка"
+          }
+        }
+      }
+    },
+    "Failed to calculate directions: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не ўдалося разлічыць маршрут: %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось рассчитать маршрут: %@"
+          }
+        }
+      }
+    },
+    "No Route Found": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Маршрут не знойдзены"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Маршрут не найден"
+          }
+        }
+      }
+    },
+    "No route found to the destination.": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не ўдалося знайсці маршрут да пункту прызначэння."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось найти маршрут до места назначения."
+          }
+        }
+      }
+    },
+    "My Location": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Маё месцазнаходжанне"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Моё местоположение"
+          }
+        }
+      }
+    },
+    "Department 1": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аддзел 1"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отдел 1"
+          }
+        }
+      }
+    },
+    "Address 1": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрас 1"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрес 1"
+          }
+        }
+      }
+    },
+    "Department 2": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аддзел 2"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отдел 2"
+          }
+        }
+      }
+    },
+    "Address 2": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрас 2"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрес 2"
+          }
+        }
+      }
+    },
+    "Department 3": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аддзел 3"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отдел 3"
+          }
+        }
+      }
+    },
+    "Address 3": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрас 3"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрес 3"
+          }
+        }
+      }
+    },
+    "Department 4": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аддзел 4"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отдел 4"
+          }
+        }
+      }
+    },
+    "Address 4": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрас 4"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрес 4"
+          }
+        }
+      }
+    },
+    "Department 5": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аддзел 5"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отдел 5"
+          }
+        }
+      }
+    },
+    "Address 5": {
+      "extractionState": "manual",
+      "localizations": {
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрас 5"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Адрес 5"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
