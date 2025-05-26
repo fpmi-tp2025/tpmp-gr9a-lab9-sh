@@ -5,7 +5,6 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   build:
     name: Build and Test default scheme using any available iPhone simulator
@@ -15,6 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+
       - name: List contents of Bank directory
         run: |
           cd Bank
@@ -23,7 +25,6 @@ jobs:
       - name: Set Default Scheme
         run: |
           cd Bank
-          # List all .xcodeproj files to verify the presence of the Xcode project
           ls -la | grep .xcodeproj
           if [ -d "BankApp.xcodeproj" ]; then
             scheme_list=$(xcodebuild -list -json | tr -d "\n")
