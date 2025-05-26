@@ -2,97 +2,138 @@ name: iOS CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
-  build-and-test:
-    name: Build and Test
+  test:
+    name: Test
     runs-on: macos-latest
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Xcode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
-
-      - name: Cache DerivedData
-        uses: actions/cache@v3
-        with:
-          path: ~/Library/Developer/Xcode/DerivedData
-          key: ${{ runner.os }}-deriveddata-${{ hashFiles('**/BankApp.xcodeproj/project.pbxproj') }}
-          restore-keys: |
-            ${{ runner.os }}-deriveddata-
-
-      - name: Install dependencies
-        run: |
-          cd Bank
-          echo "Installing dependencies..."
-          # Or if using Swift Package Manager, dependencies are resolved automatically
-
-      - name: Check Build Issues
-        run: |
-          cd Bank
-          echo "Attempting to build project to identify issues..."
-          xcodebuild -project BankApp.xcodeproj \
-            -scheme BankApp \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
-            -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
-            clean build \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" || echo "Build failed - continuing with available information"
-
-      - name: Build and Test
-        run: |
-          cd Bank
-          set -o pipefail
-          xcodebuild -project BankApp.xcodeproj \
-            -scheme BankApp \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
-            -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
-            clean build test \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY=""
-
-      - name: Run Unit Tests
-        run: |
-          cd Bank
-          set -o pipefail
-          xcodebuild -project BankApp.xcodeproj \
-            -scheme BankApp \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
-            -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
-            test -only-testing:BankAppTests \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY=""
-
-      - name: Run UI Tests
-        run: |
-          cd Bank
-          set -o pipefail
-          xcodebuild -project BankApp.xcodeproj \
-            -scheme BankApp \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
-            -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
-            test -only-testing:BankAppUITests \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY=""
-
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: |
-            Bank/BankAppTests/*.xcresult
-            Bank/BankAppUITests/*.xcresult
-
-      - name: Upload Coverage Reports
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-reports
-          path: Bank/*.xcresult
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '16.2'
+        
+    - name: Cache DerivedData
+      uses: actions/cache@v4
+      with:
+        path: ~/Library/Developer/Xcode/DerivedData
+        key: ${{ runner.os }}-derived-data-${{ hashFiles('**/*.xcodeproj', '**/*.xcworkspace') }}
+        restore-keys: |
+          ${{ runner.os }}-derived-data-
+          
+    - name: Install dependencies
+      run: |
+        cd Bank
+        # Add any dependency installation commands here if needed
+        # For example, if using CocoaPods:
+        # pod install
+        # Or if using Swift Package Manager, dependencies are resolved automatically
+        echo "Installing dependencies..."
+        
+    - name: Check Build Issues
+      run: |
+        cd Bank
+        echo "Attempting to build project to identify issues..."
+        xcodebuild -project BankApp.xcodeproj \
+          -scheme BankApp \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+          -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
+          clean build \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" || echo "Build failed - continuing with available information"
+        
+    - name: Build and Test
+      run: |
+        cd Bank
+        set -o pipefail
+        xcodebuild -project BankApp.xcodeproj \
+          -scheme BankApp \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+          -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
+          clean build test \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          | xcpretty --color --report junit --output build/reports/junit.xml
+          
+    - name: Run Unit Tests
+      run: |
+        cd Bank
+        set -o pipefail
+        xcodebuild -project BankApp.xcodeproj \
+          -scheme BankApp \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+          -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
+          test -only-testing:BankAppTests \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          | xcpretty --color
+          
+    - name: Run UI Tests
+      run: |
+        cd Bank
+        set -o pipefail
+        xcodebuild -project BankApp.xcodeproj \
+          -scheme BankApp \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+          -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
+          test -only-testing:BankAppUITests \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          | xcpretty --color
+          
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: build/reports/
+        
+    - name: Upload Coverage Reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-reports
+        path: ~/Library/Developer/Xcode/DerivedData/*/Logs/Test/*.xcresult
+        
+  build:
+    name: Build
+    runs-on: macos-latest
+    needs: test
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '16.2'
+        
+    - name: Cache DerivedData
+      uses: actions/cache@v4
+      with:
+        path: ~/Library/Developer/Xcode/DerivedData
+        key: ${{ runner.os }}-derived-data-${{ hashFiles('**/*.xcodeproj', '**/*.xcworkspace') }}
+        restore-keys: |
+          ${{ runner.os }}-derived-data-
+          
+    - name: Build for Release
+      run: |
+        cd Bank
+        set -o pipefail
+        xcodebuild -project BankApp.xcodeproj \
+          -scheme BankApp \
+          -configuration Release \
+          -destination 'generic/platform=iOS' \
+          -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
+          clean build \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          | xcpretty --color
