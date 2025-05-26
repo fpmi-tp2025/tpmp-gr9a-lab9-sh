@@ -24,10 +24,8 @@ final class BankAppUITests: XCTestCase {
     func testAppLaunch() throws {
         app.launch()
         
-        // Проверяем, что приложение запустилось
         XCTAssertTrue(app.exists)
         
-        // Проверяем наличие текстовых полей (по индексу)
         let textFields = app.textFields
         XCTAssertTrue(textFields.count >= 1) // username field
         
@@ -39,7 +37,6 @@ final class BankAppUITests: XCTestCase {
     func testLoginScreenElements() throws {
         app.launch()
         
-        // Находим элементы по типу и индексу
         let usernameField = app.textFields.element(boundBy: 0)
         let passwordField = app.secureTextFields.element(boundBy: 0)
         let loginButton = app.buttons.element(boundBy: 0)
@@ -53,7 +50,6 @@ final class BankAppUITests: XCTestCase {
     func testInvalidLogin() throws {
         app.launch()
         
-        // Вводим неверные данные
         let usernameField = app.textFields.element(boundBy: 0)
         usernameField.tap()
         usernameField.typeText("wronguser")
@@ -69,11 +65,9 @@ final class BankAppUITests: XCTestCase {
     func testEmptyFieldsLogin() throws {
         app.launch()
         
-        // Сразу нажимаем кнопку входа без ввода данных
         let loginButton = app.buttons.element(boundBy: 0)
         loginButton.tap()
         
-        // Проверяем сообщение об ошибке
         let errorLabel = app.staticTexts["invalid username or password"]
         XCTAssertTrue(errorLabel.waitForExistence(timeout: 2))
     }
