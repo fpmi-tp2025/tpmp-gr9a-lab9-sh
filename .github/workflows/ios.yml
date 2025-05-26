@@ -78,6 +78,7 @@ jobs:
           CODE_SIGNING_REQUIRED=NO \
           CODE_SIGN_IDENTITY="" \
           ONLY_ACTIVE_ARCH=YES \
+          -verbose \
           | tee build.log
           
     - name: Check for Build Issues
@@ -86,49 +87,97 @@ jobs:
         cd Bank
         echo "=== BUILD FAILED - Analyzing Issues ==="
         if [ -f build.log ]; then
-          echo "=== Last 50 lines of build log ==="
-          tail -50 build.log
+          echo "=== Complete Build Errors ==="
+          grep -A 5 -B 5 "error:" build.log || true
           echo ""
           echo "=== SQLite Expression Errors ==="
           grep -n "missing argument label" build.log || true
           echo ""
           echo "=== Type Inference Errors ==="
           grep -n "could not be inferred" build.log || true
+          echo ""
+          echo "=== Swift Compilation Errors ==="
+          grep -n "Swift compilation failed" build.log || true
+          echo ""
+          echo "=== Last 100 lines of build log ==="
+          tail -100 build.log
         fi
         
-    - name: Fix SQLite Expression Syntax (if build failed)
+        echo ""
+        echo "=== Checking source files for remaining issues ==="
+        cd BankApp
+        for file in *.swift; do
+          if [ -f "$file" ]; then
+            echo "--- $file ---"
+            grep -n "Expression<" "$file" | head -5 || true
+          fi
+        done
+        
+    - name: Advanced SQLite Fixes (if build failed)
       if: failure()
       run: |
         cd Bank/BankApp
-        echo "Attempting to fix SQLite.swift syntax errors..."
+        echo "Applying advanced SQLite.swift fixes..."
         
-        # Fix ViewControllerAccount.swift
-        if [ -f ViewControllerAccount.swift ]; then
-          # Fix Expression initializers - add 'value:' label
-          sed -i '' 's/Expression<String>("account_type")/Expression<String>(value: "account_type")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<String?>("account_subtype")/Expression<String?>(value: "account_subtype")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<Double>("balance")/Expression<Double>(value: "balance")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<Double?>("overdraft_limit")/Expression<Double?>(value: "overdraft_limit")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<String>("username")/Expression<String>(value: "username")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<Int64>("account_id")/Expression<Int64>(value: "account_id")/g' ViewControllerAccount.swift
-          echo "Fixed Expression syntax in ViewControllerAccount.swift"
-        fi
+        # More comprehensive Expression fixes with column name constructors
+        for file in *.swift; do
+          if [ -f "$file" ]; then
+            echo "Advanced processing $file..."
+            
+            # Alternative approach - use column name string directly in subscript
+            # Replace Expression usage patterns with direct column access
+            sed -i '' 's/account\[accountIdExpression\]/account[Column("account_id")]/g' "$file"
+            sed -i '' 's/account\[accountTypeExpression\]/account[Column("account_type")]/g' "$file"
+            sed -i '' 's/account\[balanceExpression\]/account[Column("balance")]/g' "$file"
+            sed -i '' 's/account\[overdraftLimitExpression\]/account[Column("overdraft_limit")]/g' "$file"
+            sed -i '' 's/account\[username\]/account[Column("username")]/g' "$file"
+            sed -i '' 's/user\[user_id\]/user[Column("user_id")]/g' "$file"
+            sed -i '' 's/user\[blocked\]/user[Column("is_blocked")]/g' "$file"
+            
+            # Fix String conversion issues
+            sed -i '' 's/String(describing: account\[/String(account[/g' "$file"
+            
+            echo "Advanced fixes applied to $file"
+          fi
+        done
         
-        # Fix ViewControllerAccounts.swift  
-        if [ -f ViewControllerAccounts.swift ]; then
-          sed -i '' 's/Expression<Int64>("user_id")/Expression<Int64>(value: "user_id")/g' ViewControllerAccounts.swift
-          sed -i '' 's/Expression<Bool>("is_blocked")/Expression<Bool>(value: "is_blocked")/g' ViewControllerAccounts.swift
-          sed -i '' 's/Expression<Int64>("account_id")/Expression<Int64>(value: "account_id")/g' ViewControllerAccounts.swift
-          sed -i '' 's/Expression<String>("account_type")/Expression<String>(value: "account_type")/g' ViewControllerAccounts.swift
-          sed -i '' 's/Expression<Double>("balance")/Expression<Double>(value: "balance")/g' ViewControllerAccounts.swift
-          echo "Fixed Expression syntax in ViewControllerAccounts.swift"
-        fi
+    - name: Pre-build SQLite Expression Fixes
+      run: |
+        cd Bank/BankApp
+        echo "Applying SQLite.swift syntax fixes before build..."
+        
+        # Create backup of original files
+        find . -name "*.swift" -exec cp {} {}.backup \;
+        
+        # Fix all Swift files with SQLite Expression syntax issues
+        for file in *.swift; do
+          if [ -f "$file" ]; then
+            echo "Processing $file..."
+            
+            # Fix Expression initializers - handle all common patterns
+            sed -i '' 's/Expression<String>("\([^"]*\)")/Expression<String>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<String?>("\([^"]*\)")/Expression<String?>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Int64>("\([^"]*\)")/Expression<Int64>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Double>("\([^"]*\)")/Expression<Double>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Double?>("\([^"]*\)")/Expression<Double?>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Bool>("\([^"]*\)")/Expression<Bool>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Int>("\([^"]*\)")/Expression<Int>(value: "\1")/g' "$file"
+            
+            # Fix potential type inference issues with explicit casting
+            sed -i '' 's/String(account\[\([^]]*\)\])/String(describing: account[\1])/g' "$file"
+            sed -i '' 's/account\[\([^]]*\)\]!/account[\1] ?? ""/g' "$file"
+            
+            echo "Applied fixes to $file"
+          fi
+        done
+        
+        echo "SQLite.swift syntax fixes completed"
         
     - name: Retry Build After Fixes
       if: failure()
       run: |
         cd Bank
-        echo "Retrying build after applying fixes..."
+        echo "Retrying build after applying advanced fixes..."
         set -o pipefail
         xcodebuild -project BankApp.xcodeproj \
           -scheme BankApp \
@@ -138,7 +187,30 @@ jobs:
           clean build \
           CODE_SIGNING_REQUIRED=NO \
           CODE_SIGN_IDENTITY="" \
-          ONLY_ACTIVE_ARCH=YES
+          ONLY_ACTIVE_ARCH=YES \
+          -verbose \
+          | tee retry-build.log
+          
+    - name: Final Error Analysis (if still failing)
+      if: failure()
+      run: |
+        cd Bank
+        echo "=== FINAL BUILD FAILURE ANALYSIS ==="
+        if [ -f retry-build.log ]; then
+          echo "=== Retry Build Errors ==="
+          grep -A 10 -B 5 "error:" retry-build.log | tail -50
+        fi
+        
+        echo ""
+        echo "=== Current source file state ==="
+        cd BankApp
+        for file in ViewControllerAccount.swift ViewControllerAccounts.swift; do
+          if [ -f "$file" ]; then
+            echo "--- Content of $file (first 30 lines) ---"
+            head -30 "$file"
+            echo ""
+          fi
+        done
           
     - name: Run Unit Tests
       run: |
@@ -244,23 +316,28 @@ jobs:
       run: |
         cd Bank/BankApp
         
-        # Apply the same SQLite fixes for release build
-        if [ -f ViewControllerAccount.swift ]; then
-          sed -i '' 's/Expression<String>("account_type")/Expression<String>(value: "account_type")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<String?>("account_subtype")/Expression<String?>(value: "account_subtype")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<Double>("balance")/Expression<Double>(value: "balance")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<Double?>("overdraft_limit")/Expression<Double?>(value: "overdraft_limit")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<String>("username")/Expression<String>(value: "username")/g' ViewControllerAccount.swift
-          sed -i '' 's/Expression<Int64>("account_id")/Expression<Int64>(value: "account_id")/g' ViewControllerAccount.swift
-        fi
-        
-        if [ -f ViewControllerAccounts.swift ]; then
-          sed -i '' 's/Expression<Int64>("user_id")/Expression<Int64>(value: "user_id")/g' ViewControllerAccounts.swift
-          sed -i '' 's/Expression<Bool>("is_blocked")/Expression<Bool>(value: "is_blocked")/g' ViewControllerAccounts.swift  
-          sed -i '' 's/Expression<Int64>("account_id")/Expression<Int64>(value: "account_id")/g' ViewControllerAccounts.swift
-          sed -i '' 's/Expression<String>("account_type")/Expression<String>(value: "account_type")/g' ViewControllerAccounts.swift
-          sed -i '' 's/Expression<Double>("balance")/Expression<Double>(value: "balance")/g' ViewControllerAccounts.swift
-        fi
+        # Apply comprehensive SQLite fixes for release build
+        for file in *.swift; do
+          if [ -f "$file" ]; then
+            # Fix Expression initializers with value parameter
+            sed -i '' 's/Expression<String>("\([^"]*\)")/Expression<String>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<String?>("\([^"]*\)")/Expression<String?>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Int64>("\([^"]*\)")/Expression<Int64>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Double>("\([^"]*\)")/Expression<Double>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Double?>("\([^"]*\)")/Expression<Double?>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Bool>("\([^"]*\)")/Expression<Bool>(value: "\1")/g' "$file"
+            sed -i '' 's/Expression<Int>("\([^"]*\)")/Expression<Int>(value: "\1")/g' "$file"
+            
+            # Fix column access patterns
+            sed -i '' 's/account\[accountIdExpression\]/account[Column("account_id")]/g' "$file"
+            sed -i '' 's/account\[accountTypeExpression\]/account[Column("account_type")]/g' "$file"
+            sed -i '' 's/account\[balanceExpression\]/account[Column("balance")]/g' "$file"
+            sed -i '' 's/account\[overdraftLimitExpression\]/account[Column("overdraft_limit")]/g' "$file"
+            sed -i '' 's/account\[username\]/account[Column("username")]/g' "$file"
+            sed -i '' 's/user\[user_id\]/user[Column("user_id")]/g' "$file"
+            sed -i '' 's/user\[blocked\]/user[Column("is_blocked")]/g' "$file"
+          fi
+        done
         
     - name: Build for Release
       run: |
