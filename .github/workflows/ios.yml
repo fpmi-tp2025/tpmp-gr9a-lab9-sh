@@ -43,7 +43,7 @@ jobs:
         echo "Attempting to build project to identify issues..."
         xcodebuild -project BankApp.xcodeproj \
           -scheme BankApp \
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
           -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
           clean build \
           CODE_SIGNING_REQUIRED=NO \
@@ -55,7 +55,7 @@ jobs:
         set -o pipefail
         xcodebuild -project BankApp.xcodeproj \
           -scheme BankApp \
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
           -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
           clean build test \
           CODE_SIGNING_REQUIRED=NO \
@@ -68,7 +68,7 @@ jobs:
         set -o pipefail
         xcodebuild -project BankApp.xcodeproj \
           -scheme BankApp \
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
           -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
           test -only-testing:BankAppTests \
           CODE_SIGNING_REQUIRED=NO \
@@ -81,7 +81,7 @@ jobs:
         set -o pipefail
         xcodebuild -project BankApp.xcodeproj \
           -scheme BankApp \
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
           -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
           test -only-testing:BankAppUITests \
           CODE_SIGNING_REQUIRED=NO \
