@@ -39,7 +39,7 @@ jobs:
           echo "Attempting to build project to identify issues..."
           xcodebuild -project BankApp.xcodeproj \
             -scheme BankApp \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.4' \
             -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
             clean build \
             CODE_SIGNING_REQUIRED=NO \
