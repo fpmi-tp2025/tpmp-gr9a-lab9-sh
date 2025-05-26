@@ -23,7 +23,9 @@ jobs:
       - name: Set Default Scheme
         run: |
           cd Bank
-          if [ -f "BankApp.xcodeproj" ]; then
+          # List all .xcodeproj files to verify the presence of the Xcode project
+          ls -la | grep .xcodeproj
+          if [ -d "BankApp.xcodeproj" ]; then
             scheme_list=$(xcodebuild -list -json | tr -d "\n")
             default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
             echo $default | cat >default
