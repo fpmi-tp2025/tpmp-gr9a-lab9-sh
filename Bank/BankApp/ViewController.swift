@@ -53,20 +53,15 @@ class ViewController: UIViewController {
                 }
             }
             if (!flag) {
-                errorLabel.text = "invalid username or password"
-
+                errorLabel.text = NSLocalizedString("invalid username or password", comment: "")
             }
         } catch {
-            print("error connectng data base")
+            print(NSLocalizedString("error connecting to database", comment: ""))
             return
         }
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
-
-
-

@@ -5,7 +5,6 @@
 //  Created by Ivan Hontarau on 25.05.25.
 //
 
-
 import UIKit
 import SQLite
 
@@ -14,7 +13,6 @@ class ViewControllerAccounts: UIViewController {
 
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
-
     }
 
     var dataSourceArray: [String] = []
@@ -40,7 +38,7 @@ class ViewControllerAccounts: UIViewController {
                 }
             }
         } catch {
-            print("error connectng data base")
+            print(NSLocalizedString("error connecting to database", comment: ""))
             return
         }
     }
@@ -55,16 +53,13 @@ class ViewControllerAccounts: UIViewController {
         let balance = account[balanceExpression]
 
         // Create a new row for the table
-        let newRow = "\(String(accountId)) \(String(accountType)) \(String(balance))$"
+        let newRow = "\(String(accountId)) \(accountType) \(String(balance))$"
         idArray.append(accountId)
 
         dataSourceArray.append(newRow)
 
         table.reloadData()
     }
-
-
-
 }
 
 extension ViewControllerAccounts: UITableViewDataSource, UITableViewDelegate {
@@ -77,7 +72,6 @@ extension ViewControllerAccounts: UITableViewDataSource, UITableViewDelegate {
         cell.customLabel.text = dataSourceArray[indexPath.row]
         return cell
     }
-
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected:\(idArray[indexPath.row])")

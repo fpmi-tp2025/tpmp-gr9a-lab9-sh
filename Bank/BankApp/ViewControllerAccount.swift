@@ -5,14 +5,6 @@
 //  Created by Ivan Hontarau on 25.05.25.
 //
 
-
-//
-//  ViewControllerAccount.swift
-//  BankApp
-//
-//   Created by DIma, Demid and Dora, Masha. DEATH PACT. on 28.05.24.
-//
-
 import UIKit
 import SQLite
 
@@ -60,45 +52,31 @@ class ViewControllerAccount: UIViewController, UITableViewDataSource {
                 if (account[accountIdExpression] == accountId) {
                     for user in try db.prepare(users) {
                         if (user[userIdExpression] == account[userIdExpression]) {
-                            titles.append("Owner")
-                            titles.append("Account ID")
-                            titles.append("Account Type")
+                            titles.append(NSLocalizedString("Owner", comment: ""))
+                            titles.append(NSLocalizedString("Account ID", comment: ""))
+                            titles.append(NSLocalizedString("Account Type", comment: ""))
                             strings.append(user[username])
                             strings.append(String(account[accountIdExpression]))
                             strings.append(account[accountTypeExpression])
                             if (account[accountTypeExpression] == "Card") {
-                                titles.append("Account Sub Type")
+                                titles.append(NSLocalizedString("Account Sub Type", comment: ""))
                                 strings.append(account[accountSubtypeExpression]!)
                                 if (account[accountSubtypeExpression] == "Salary") {
-                                    titles.append("Overdraft Limit")
+                                    titles.append(NSLocalizedString("Overdraft Limit", comment: ""))
                                     strings.append(String(account[overdraftLimitExpression]!))
                                 }
                             }
 
-                            titles.append("Balance")
+                            titles.append(NSLocalizedString("Balance", comment: ""))
                             strings.append("\(account[balanceExpression])$")
 
                         }
                     }
                 }
             }
-
-
         } catch {
-            print("error connectng data base")
+            print(NSLocalizedString("error connecting to database", comment: ""))
             return
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

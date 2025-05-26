@@ -4,6 +4,7 @@
 //
 //  Created by Ivan Hontarau on 25.05.25.
 //
+
 import MapKit
 
 class ViewControllerMap: UIViewController {
@@ -37,11 +38,11 @@ class ViewControllerMap: UIViewController {
 
     func addDepartments() {
         departments = [
-            (name: "Department 1", coordinate: CLLocationCoordinate2D(latitude: 53.9022, longitude: 27.5618), address: "Address 1"),
-            (name: "Department 2", coordinate: CLLocationCoordinate2D(latitude: 53.8922, longitude: 27.5618), address: "Address 2"),
-            (name: "Department 3", coordinate: CLLocationCoordinate2D(latitude: 53.9122, longitude: 27.5618), address: "Address 3"),
-            (name: "Department 4", coordinate: CLLocationCoordinate2D(latitude: 53.9222, longitude: 27.5618), address: "Address 4"),
-            (name: "Department 5", coordinate: CLLocationCoordinate2D(latitude: 53.9322, longitude: 27.5618), address: "Address 5")
+            (name: NSLocalizedString("Department 1", comment: ""), coordinate: CLLocationCoordinate2D(latitude: 53.9022, longitude: 27.5618), address: NSLocalizedString("Address 1", comment: "")),
+            (name: NSLocalizedString("Department 2", comment: ""), coordinate: CLLocationCoordinate2D(latitude: 53.8922, longitude: 27.5618), address: NSLocalizedString("Address 2", comment: "")),
+            (name: NSLocalizedString("Department 3", comment: ""), coordinate: CLLocationCoordinate2D(latitude: 53.9122, longitude: 27.5618), address: NSLocalizedString("Address 3", comment: "")),
+            (name: NSLocalizedString("Department 4", comment: ""), coordinate: CLLocationCoordinate2D(latitude: 53.9222, longitude: 27.5618), address: NSLocalizedString("Address 4", comment: "")),
+            (name: NSLocalizedString("Department 5", comment: ""), coordinate: CLLocationCoordinate2D(latitude: 53.9322, longitude: 27.5618), address: NSLocalizedString("Address 5", comment: ""))
         ]
 
         for department in departments {
@@ -55,8 +56,8 @@ class ViewControllerMap: UIViewController {
     @objc func showRoute() {
         // Check if user location is available
         guard let userLocation = userLocation else {
-            let alert = UIAlertController(title: "Location Not Available", message: "Please enable location services and try again.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Location Not Available", comment: ""), message: NSLocalizedString("Please enable location services and try again.", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
         }
@@ -75,8 +76,8 @@ class ViewControllerMap: UIViewController {
 
         // Ensure a nearest department was found
         guard let nearest = nearestDepartment else {
-            let alert = UIAlertController(title: "No Departments Found", message: "No departments available to show the route.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("No Departments Found", comment: ""), message: NSLocalizedString("No departments available to show the route.", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
         }
@@ -96,16 +97,16 @@ class ViewControllerMap: UIViewController {
 
             if let error = error {
                 print("Error calculating directions: \(error.localizedDescription)")
-                let alert = UIAlertController(title: "Error", message: "Failed to calculate directions: \(error.localizedDescription)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: String(format: NSLocalizedString("Failed to calculate directions: %@", comment: ""), error.localizedDescription), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
             }
 
             guard let route = response?.routes.first else {
                 print("No route found in response")
-                let alert = UIAlertController(title: "No Route Found", message: "No route found to the destination.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("No Route Found", comment: ""), message: NSLocalizedString("No route found to the destination.", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
             }
@@ -180,7 +181,7 @@ extension ViewControllerMap: CLLocationManagerDelegate {
         // Add an annotation for the user's location
         let userAnnotation = MKPointAnnotation()
         userAnnotation.coordinate = location.coordinate
-        userAnnotation.title = "My Location"
+        userAnnotation.title = NSLocalizedString("My Location", comment: "")
         mapView.addAnnotation(userAnnotation)
     }
 }
