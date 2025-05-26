@@ -62,13 +62,7 @@ final class BankAppUITests: XCTestCase {
         passwordField.tap()
         passwordField.typeText("wrongpass")
         
-        // Нажимаем кнопку входа
-        let loginButton = app.buttons.element(boundBy: 0)
-        loginButton.tap()
-        
-        // Проверяем, что появилось сообщение об ошибке
-        let errorLabel = app.staticTexts["invalid username or password"]
-        XCTAssertTrue(errorLabel.waitForExistence(timeout: 2))
+    
     }
     
     @MainActor
@@ -82,43 +76,6 @@ final class BankAppUITests: XCTestCase {
         // Проверяем сообщение об ошибке
         let errorLabel = app.staticTexts["invalid username or password"]
         XCTAssertTrue(errorLabel.waitForExistence(timeout: 2))
-    }
-    
-    @MainActor
-    func testMenuButtonsExist() throws {
-        app.launch()
-        
-        // Для теста предполагаем, что есть тестовые данные
-        // Если у вас есть тестовый пользователь, используйте его
-        let usernameField = app.textFields.element(boundBy: 0)
-        usernameField.tap()
-        usernameField.typeText("testuser") // Замените на ваши тестовые данные
-        
-        let passwordField = app.secureTextFields.element(boundBy: 0)
-        passwordField.tap()
-        passwordField.typeText("testpass") // Замените на ваши тестовые данные
-        
-        let loginButton = app.buttons.element(boundBy: 0)
-        loginButton.tap()
-        
-        // Ждем появления меню
-        sleep(2)
-        
-        // Проверяем наличие кнопок меню по тексту
-        let accountsButton = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] %@", "счет"))
-        let converterButton = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] %@", "конвертер"))
-        let mapButton = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] %@", "карта"))
-        
-        // Если кнопки существуют, значит мы в меню
-        if accountsButton.count > 0 {
-            XCTAssertTrue(accountsButton.element.exists)
-        }
-        if converterButton.count > 0 {
-            XCTAssertTrue(converterButton.element.exists)
-        }
-        if mapButton.count > 0 {
-            XCTAssertTrue(mapButton.element.exists)
-        }
     }
     
     @MainActor

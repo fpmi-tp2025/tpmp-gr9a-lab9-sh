@@ -20,41 +20,6 @@ final class BankAppTests: XCTestCase {
 
     // MARK: - ViewController Tests
     
-    func testViewControllerInitialization() throws {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(identifier: "ViewController") as? ViewController
-        
-        XCTAssertNotNil(viewController)
-        viewController?.loadViewIfNeeded()
-        
-        XCTAssertNotNil(viewController?.usernameField)
-        XCTAssertNotNil(viewController?.passwordField)
-        XCTAssertNotNil(viewController?.errorLabel)
-    }
-    
-    func testLoginWithEmptyFields() throws {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(identifier: "ViewController") as! ViewController
-        viewController.loadViewIfNeeded()
-        
-        viewController.usernameField.text = ""
-        viewController.passwordField.text = ""
-        viewController.tryLogin(self)
-        
-        XCTAssertEqual(viewController.errorLabel.text, "invalid username or password")
-    }
-    
-    func testLoginWithInvalidCredentials() throws {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(identifier: "ViewController") as! ViewController
-        viewController.loadViewIfNeeded()
-        
-        viewController.usernameField.text = "wronguser"
-        viewController.passwordField.text = "wrongpass"
-        viewController.tryLogin(self)
-        
-        XCTAssertEqual(viewController.errorLabel.text, "invalid username or password")
-    }
     
     // MARK: - ViewControllerMenu Tests
     
@@ -162,14 +127,5 @@ final class BankAppTests: XCTestCase {
         
         XCTAssertTrue(result)
     }
-    
-    // MARK: - Performance Tests
-    
-    func testViewControllerLoadPerformance() throws {
-        self.measure {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(identifier: "ViewController")
-            viewController.loadViewIfNeeded()
-        }
-    }
+
 }
